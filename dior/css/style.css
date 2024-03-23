@@ -70,6 +70,19 @@ body {
   color: #fff;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 /* header */
 
 .nav {
@@ -233,5 +246,224 @@ body {
 
 .about__arrow {
   margin-left: -200px;
-  margin-top: -6px;
+  margin-top: 20px;
+}
+
+.about__link {
+  margin-top: -20px;
+}
+
+/* accordeon */
+
+.accordeon__list {
+  padding-left: 200px;
+}
+
+.accordeon__item {
+  border-bottom: 1px solid #000;
+  padding: 0 101px 20px 0;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.accordeon__item--active .accordeon__content {
+  opacity: 1;
+  grid-template-rows: 2fr;
+}
+
+.accordeon__item::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 16px;
+  height: 51px;
+  background-image: url('../images/arrow-down.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  right: 85px;
+  top: 0;
+  transition: transform 0.5s ease;
+}
+
+.accordeon__item--active::after {
+  transform: rotate(180deg);
+}
+
+.accordeon__item:last-child {
+  margin-bottom: 73px;
+  position: relative;
+}
+
+.accordeon__item:last-child::before {
+  content: '';
+  position: absolute;
+  bottom: -73px;
+  left: 268px;
+  display: block;
+  width: 65px;
+  height: 120px;
+  background-image: url('../images/accordeon-deco.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.accordeon__item:last-child.accordeon__item--active::before {
+  transform: scale(0) translateY(100%);
+  opacity: 0;
+}
+
+.accordeon__trigger {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 51px;
+  cursor: pointer;
+}
+
+.accordeon__title {
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  flex-basis: 300px;
+}
+
+.accordeon__text {
+  flex-basis: 458px;
+  padding-right: 104px;
+}
+
+.accordeon__content {
+  padding-top: 20px;
+  max-width: 880px;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, grid-template-rows 0.5s ease;
+}
+
+.accordeon__content ul {
+  min-height: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* products */
+
+.products {
+  padding-bottom: 150px;
+}
+
+.products__inner {
+  margin-bottom: 150px;
+  position: relative;
+  min-height: 647px;
+}
+
+.products__title {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.34;
+  width: 100px;
+}
+
+.products__list {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  top: 0;
+  left: 200px;
+}
+
+.products__item {
+  text-align: center;
+  width: 386px;
+}
+
+.products__step {
+  display: block;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 20px;
+}
+
+.products__box {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.products__img {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.products__img:hover {
+  transform: scale(1.05);
+}
+
+.products__item-title {
+  margin-bottom: 10px;
+}
+
+.products__descr {
+  margin-bottom: 10px;
+}
+
+.products__price {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.34;
+}
+
+.products__popup {
+  display: block;
+  height: 600px;
+  margin-left: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.products__popup::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  display: block;
+  background-image: url('../images/play.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100px;
+  height: 100px;
+  transition: transform 0.5s ease;
+}
+
+.products__popup::after {
+  content: '';
+  position: absolute;
+  inset: 0;  
+  background-color: rgba(255, 255, 255, 0);
+  transition: background-color 0.5s ease;
+}
+
+.products__popup:hover::after {
+  background-color: rgba(255, 255, 255, .2);
+}
+
+.products__popup:hover::before {
+  transform: translate(-50%, -50%) scale(1.2);
 }
