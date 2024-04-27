@@ -1,3 +1,25 @@
+const menuBtn = document.querySelector('.burger-btn');
+const closeBtn = document.querySelector('.close-btn');
+const menu = document.querySelector('.menu-burger');
+const body = document.querySelector('body');
+
+menuBtn.addEventListener('click', () => {
+  menu.classList.add('menu-burger--active');
+  body.classList.add('lock');
+});
+
+closeBtn.addEventListener('click', () => {
+  menu.classList.remove('menu-burger--active');
+  body.classList.remove('lock');
+});
+
+document.addEventListener('click', () => {
+  if (event.target.classList.contains('lock')) {
+    menu.classList.remove('menu-burger--active');
+    document.body.classList.remove('lock');
+  }  
+});
+
 const swiper = new Swiper('.top__slider', {
   effect: 'fade',
   autoplay: {
